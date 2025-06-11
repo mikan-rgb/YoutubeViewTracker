@@ -1,6 +1,7 @@
 import { Youtube, Gamepad2 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import AppDownloader from "@/components/app-downloader";
 
 export default function Header() {
   const [location] = useLocation();
@@ -36,6 +37,8 @@ export default function Header() {
                 FPS Arena
               </Button>
             </Link>
+            
+            <AppDownloader />
           </nav>
         </div>
       </div>
