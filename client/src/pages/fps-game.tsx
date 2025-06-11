@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import type { InsertGameScore, GameScore } from "@shared/schema";
 import { Link } from "wouter";
-import FPSGameEngine from "@/components/fps-game-engine";
+import SimpleFPSGame from "@/components/simple-fps-game";
 
 interface GameStats {
   score: number;
@@ -159,8 +159,7 @@ export default function FPSGame() {
       )}
 
       {/* Game Engine */}
-      <FPSGameEngine
-        ref={gameEngineRef}
+      <SimpleFPSGame
         gameState={gameState}
         onStatsUpdate={updateGameStats}
         onGameOver={gameOver}
