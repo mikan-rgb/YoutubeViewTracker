@@ -19,6 +19,16 @@ export const videoHistory = pgTable("video_history", {
   timestamp: timestamp("timestamp").defaultNow().notNull(),
 });
 
+export const gameScores = pgTable("game_scores", {
+  id: serial("id").primaryKey(),
+  playerName: text("player_name").notNull(),
+  score: text("score").notNull(),
+  level: text("level").notNull(),
+  kills: text("kills").notNull(),
+  accuracy: text("accuracy").notNull(),
+  timestamp: timestamp("timestamp").defaultNow().notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -29,8 +39,16 @@ export const insertVideoHistorySchema = createInsertSchema(videoHistory).omit({
   timestamp: true,
 });
 
+export const insertGameScoreSchema = createInsertSchema(gameScores).omit({
+  id: true,
+  timestamp: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 
 export type InsertVideoHistory = z.infer<typeof insertVideoHistorySchema>;
 export type VideoHistory = typeof videoHistory.$inferSelect;
+
+export type InsertGameScore = z.infer<typeof insertGameScoreSchema>;
+export type GameScore = typeof gameScores.$inferSelect;
